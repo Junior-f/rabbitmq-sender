@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "MKFXLVCk72kozPG4Mmoc9YzIPYXX2w9FkUwke9XfgOwpbIFCFbw0wZYibWobYlGjg1o2WgfNzAvYJYBST4NXLQ==",
+  "dgSpecHash": "dYs4YtM/k1DQ73F/4f3jG0oNXZAPN2AO1MIhQ5+DAkFH1Bnv02Y9pXjkffC7RyVdXoN7N0vJs0I80djpKKMiSA==",
   "success": true,
   "projectFilePath": "/home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/Sender.csproj",
   "expectedPackageFiles": [
     "/home/francisco-junior/.nuget/packages/microsoft.aspnetcore.openapi/8.0.11/microsoft.aspnetcore.openapi.8.0.11.nupkg.sha512",
     "/home/francisco-junior/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/home/francisco-junior/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/home/francisco-junior/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/home/francisco-junior/.nuget/packages/rabbitmq.client/7.0.0/rabbitmq.client.7.0.0.nupkg.sha512",
     "/home/francisco-junior/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "/home/francisco-junior/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",

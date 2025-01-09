@@ -2,7 +2,7 @@
 // using System.Text;
 
 
-// namespace SendApi
+// namespace Send
 // {
 //     public class Sender
 //     {
