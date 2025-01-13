@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Sender.Models;
 using Sender.Service;
 
-namespace RabbitMQApp
+namespace Sender.Controllers
 {
 
     [ApiController]
@@ -19,10 +19,9 @@ namespace RabbitMQApp
         public static List<Register> Registers { get; set; } = new List<Register>();
         public static List<ResetPassword> ResetPasswords { get; set; } = new List<ResetPassword>();
 
-        public ProdutosController()
+        public ProdutosController(IRabbitMqService rabbitMqService)
         {
-            var hostname = "localhost";
-            _rabbitMqService = new RabbitMqService(hostname);
+            _rabbitMqService = rabbitMqService;
         }
 
         [HttpPost("orders")]
@@ -34,7 +33,7 @@ namespace RabbitMQApp
             }
 
             Products.Add(product);
-            await _rabbitMqService.SendMessage("ordem_de_compra", product);
+            await _rabbitMqService.SendMessage("ordem_de_compra", "rota_compras", product);
             return Ok(product);
         }
 
@@ -53,7 +52,7 @@ namespace RabbitMQApp
             }
 
             Registers.Add(register);
-            await _rabbitMqService.SendMessage("novo_cadastro", register);
+            await _rabbitMqService.SendMessage("novo_cadastro", "rota_cadastro", register);
             return Ok(register);
         }
 
@@ -73,7 +72,7 @@ namespace RabbitMQApp
                 return BadRequest("Dados para redefinição de senha inválidos.");
             }
             ResetPasswords.Add(resetPassword);
-            await _rabbitMqService.SendMessage("reset_senha", resetPassword);
+            await _rabbitMqService.SendMessage("reset_senha", "rota_senha", resetPassword);
             return Ok(resetPassword);
         }
 
