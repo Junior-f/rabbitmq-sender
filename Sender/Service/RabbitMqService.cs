@@ -17,13 +17,10 @@ namespace Sender.Service
         {
             var factory = new ConnectionFactory()
             {
-
                 HostName = "localhost"
             };
-
             _connection = factory.CreateConnectionAsync("publisher").Result;
             _channel = _connection.CreateChannelAsync().Result;
-
         }
         public async Task SendMessage(string queueName, string _routingKey, object mensagem)
         {

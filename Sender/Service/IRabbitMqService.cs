@@ -5,6 +5,6 @@ namespace Sender.Service
 {
     public interface IRabbitMqService
     {
-        Task SendMessage(string topic, object message);
+        Task SendMessage(string routingKey, string exchange, object message);
     }
 }
