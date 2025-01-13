@@ -7,7 +7,7 @@ namespace Sender.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Required(ErrorMessage = "Value is required")]
         public float Value { get; set; }
         [Required(ErrorMessage = "Qtd is required")]
