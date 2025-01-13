@@ -41,6 +41,9 @@
 /home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Sender.dll
 /home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Sender.pdb
 /home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
 /home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Microsoft.OpenApi.dll
 /home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/Newtonsoft.Json.dll
 /home/francisco-junior/PORTAL/ProjetoRabbitMQ/rabbitmq-sender/Sender/bin/Debug/net8.0/RabbitMQ.Client.dll
