@@ -6,6 +6,7 @@ namespace Sender.Models
 {
     public class Register
     {
+        public Guid Id { get; set; } = Guid.NewGuid();
         [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
 
