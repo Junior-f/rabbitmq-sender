@@ -17,19 +17,22 @@ namespace Sender.Service
         {
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost"
+                HostName = "rabbitmq.utilities",
+                UserName = "user",
+                Password = "-DCqZEF5|n%bwV*5]KJMQjJYsd=JEF-x"
+
             };
-            _connection = factory.CreateConnectionAsync("publisher").Result;
+            _connection = factory.CreateConnectionAsync().Result;
             _channel = _connection.CreateChannelAsync().Result;
         }
         public async Task SendMessage(string queueName, string _routingKey, object mensagem)
         {
             try
             {
-                await _channel.ExchangeDeclareAsync(exchange: _exchange, type: ExchangeType.Direct, durable: true);
+                //await _channel.ExchangeDeclareAsync(exchange: _exchange, type: ExchangeType.Direct, durable: true);
 
                 await _channel.QueueDeclareAsync(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
-                await _channel.QueueBindAsync(queue: queueName, exchange: _exchange, routingKey: _routingKey);
+                //await _channel.QueueBindAsync(queue: queueName,  routingKey: _routingKey);
 
                 var type = mensagem.GetType();
 
@@ -38,9 +41,9 @@ namespace Sender.Service
 
                 Console.WriteLine($"{type.Name} Published ");
 
-                await _channel.BasicPublishAsync(_exchange, _routingKey, body);
+                await _channel.BasicPublishAsync(exchange: "", routingKey: queueName, body);
 
-                Console.WriteLine($"[RabbitMQ] Mensagem enviada para a fila '{_routingKey}': {message}");
+                Console.WriteLine($"[RabbitMQ] Mensagem enviada para a fila '{queueName}': {message}");
             }
             catch (Exception ex)
             {

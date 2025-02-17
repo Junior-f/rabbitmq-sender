@@ -15,13 +15,17 @@ namespace Sender.Controllers
     public class ProdutosController : ControllerBase
     {
         private readonly IRabbitMqService _rabbitMqService;
+
+        private readonly ITemplateService _templateService;
         public static List<Product> Products { get; set; } = new List<Product>();
         public static List<Register> Registers { get; set; } = new List<Register>();
         public static List<ResetPassword> ResetPasswords { get; set; } = new List<ResetPassword>();
+        public static List<TemplateMessageViewModel> TemplateMessageViewModels { get; set; } = new List<TemplateMessageViewModel>();
 
-        public ProdutosController(IRabbitMqService rabbitMqService)
+        public ProdutosController(IRabbitMqService rabbitMqService, ITemplateService templateService)
         {
             _rabbitMqService = rabbitMqService;
+            _templateService = templateService;
         }
 
         [HttpPost("orders")]
@@ -44,15 +48,44 @@ namespace Sender.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] Register register)
+        public async Task<IActionResult> Register([FromBody] TemplateMessageViewModel register)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var newRegister = _templateService.ToCreateMessageTemplateViewModel(register);
 
-            Registers.Add(register);
-            await _rabbitMqService.SendMessage("novo_cadastro", "rota_cadastro", register);
+            TemplateMessageViewModels.Add(newRegister);
+            await _rabbitMqService.SendMessage("medical_referral_tc_dev", "medical_referral_tc_dev", newRegister);
+            return Ok(register);
+        }
+
+        [HttpPost("register2")]
+        public async Task<IActionResult> Register2([FromBody] TemplateMessageViewModel register)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var newRegister = _templateService.ToCreateMessageTemplateViewModel(register);
+
+            TemplateMessageViewModels.Add(newRegister);
+            await _rabbitMqService.SendMessage("medical_referral_tc_dev", "medical_referral_tc_dev", newRegister);
+            return Ok(register);
+        }
+
+        [HttpPost("register3")]
+        public async Task<IActionResult> Register3([FromBody] TemplateMessageViewModel register)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var newRegister = _templateService.ToCreateMessageTemplateViewModel(register);
+
+            TemplateMessageViewModels.Add(newRegister);
+            await _rabbitMqService.SendMessage("medical_referral_tc_dev", "medical_referral_tc_dev", newRegister);
             return Ok(register);
         }
 
@@ -81,5 +114,6 @@ namespace Sender.Controllers
         {
             return Ok(ResetPasswords);
         }
+
     }
 }

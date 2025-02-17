@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 builder.Services.AddSingleton<IRabbitMqService, RabbitMqService>();
+builder.Services.AddScoped<ITemplateService, TemplateService>();
 builder.Services.AddHostedService<Receiver>();
 
 builder.Services.AddControllers();
